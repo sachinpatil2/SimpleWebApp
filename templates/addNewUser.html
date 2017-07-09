@@ -1,0 +1,99 @@
+<div  id="addUser" class="scrollable register_page">
+  <div class="scrollable-content">
+   <form role="form" name="regiForm" ng-submit="saveUserInfo()" novalidate>
+      <fieldset>
+         <div class="row" style="margin:10% 0 5% 0;">
+            <div class="col-xs-12">
+               Add new User
+            </div>
+            <div class="col-xs-12">
+               <div class="form-group register_input">
+                  <input type="text" placeholder="First Name*" required name="firstname" ng-pattern="/^[A-Za-z .]+$/" ng-maxlength="20"
+                     class="form-control transparent-input" ng-model="user.firstName">
+                  <div ng-show="(regiForm.$submitted || (regiForm.firstname.$dirty && regiForm.firstname.$invalid))" class="warningText">
+                     <span class="help-block" ng-show="regiForm.firstname.$error.required" >First name is mandatory.</span>
+                     <span class="help-block" ng-show="regiForm.firstname.$error.pattern">First name is not valid.</span>
+                     <span class="help-block" ng-show="regiForm.firstname.$error.maxlength" >First name exceeds maximum(20) character limit.</span>
+                  </div>
+                  <input type="text" placeholder="Last Name*" required name="lastname" ng-pattern="/^[A-Za-z .]+$/" ng-maxlength="20"
+                     class="form-control transparent-input" ng-model="user.lastName">
+                  <div ng-show="(regiForm.$submitted || (regiForm.lastname.$dirty && regiForm.lastname.$invalid))" class="warningText">
+                     <span class="help-block" ng-show="regiForm.lastname.$error.required" >Last name is mandatory.</span>
+                     <span class="help-block" ng-show="regiForm.lastname.$error.pattern">Last name is not valid.</span>
+                     <span class="help-block" ng-show="regiForm.lastname.$error.maxlength" >Last name exceeds maximum(20) character limit.</span>
+                  </div>
+                  <input type="email" placeholder="Email ID*" required  name="emailId" ng-pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/" ng-maxlength="50"
+                     class="form-control transparent-input" ng-model="user.email">
+                  <div ng-show="(regiForm.$submitted || (regiForm.emailId.$dirty && regiForm.emailId.$invalid))" class="warningText">
+                     <span class="help-block" ng-show="regiForm.emailId.$error.required" >Email ID is mandatory.</span>
+                     <span class="help-block" ng-show="regiForm.emailId.$error.pattern">This is not a valid email id.</span>
+                     <span class="help-block"  ng-show="regiForm.emailId.$error.maxlength" >Email ID exceeds maximum(50) character limit.</span>
+                  </div>
+                  <input type="text" placeholder="City*" required name="city" ng-pattern="/^[A-Za-z .]+$/" ng-maxlength="20"
+                     class="form-control transparent-input" ng-model="user.city">
+                  <div ng-show="(regiForm.$submitted || (regiForm.city.$dirty && regiForm.city.$invalid))" class="warningText">
+                     <span class="help-block" ng-show="regiForm.city.$error.required" >City name is mandatory.</span>
+                     <span class="help-block" ng-show="regiForm.city.$error.pattern">City name is not valid.</span>
+                     <span class="help-block" ng-show="regiForm.city.$error.maxlength" >City name exceeds maximum(20) character limit.</span>
+                  </div>
+                  <input type="date" ng-model="dob" name="bday">
+                  <!-- <datepicker>
+                      <input ng-model="user.dob" type="text"/>
+                  </datepicker> -->
+                  <select name="userType" ng-model="user.userType"   class="form-control transparent-input"
+                     ng-selected="getCountrycode(user.country)">
+                     <option value="" disabled selected>select userType </option>
+                     <option ng-repeat="userType in userTypes" value="{{userType}}">{{userType}}</option>
+                  </select>
+                  <select name="userStatus" ng-model="user.userStatus"   class="form-control transparent-input"
+                     ng-selected="getCountrycode(user.country)">
+                     <option value="" disabled selected>select userStatus </option>
+                     <option ng-repeat="userStatus in userStatusTypes" value="{{userStatus}}">{{userStatus}}</option>
+                  </select>
+
+
+               </div>
+            </div>
+            <div class="col-xs-12">
+               <div class="form-group register_input">
+                  <input type="email" placeholder="User Name" required  name="userId" readonly
+                     class="form-control transparent-input" ng-model="user.email" ng-bind="user.email" >
+                  <input type="password" placeholder="Password*" required name="password" ng-pattern="/^[^\w\d]*(([0-9]+.*[A-Za-z]+.*)|[A-Za-z]+.*([0-9]+.*))$/"
+                     ng-minlength="6" ng-maxlength="12"
+                     class="form-control transparent-input" data-ng-model="user.password">
+                  <div ng-show="(regiForm.$submitted || (regiForm.password.$dirty && regiForm.password.$invalid))" class="warningText">
+                     <span class="help-block" ng-show="regiForm.password.$error.required" >Password is mandatory.</span>
+                     <span class="help-block" ng-show="regiForm.password.$error.minlength" >Password should contain minimum 6 characters.</span>
+                     <span class="help-block" ng-show="regiForm.password.$error.maxlength" >Password exceeds maximum(12) character limit.</span>
+                     <span class="help-block" ng-show="regiForm.password.$error.pattern">Password should be alphanumeric.<br>
+                  </div>
+                  <input type="password" placeholder="Confirm Password*" required name="password_verify"
+                     class="form-control transparent-input" ng-model="user.password_verify" data-password-verify="user.password">
+                  <div ng-show="(regiForm.$submitted || (regiForm.password_verify.$dirty && regiForm.password_verify.$invalid))" class="warningText">
+                     <span class="help-block" ng-show="regiForm.password_verify.$error.required" >Retype password is mandatory.</span>
+                     <span class="help-block" ng-show="regiForm.password_verify.$error.passwordVerify">Passwords do not match.</span>
+                  </div>
+                  <div class="col-xs-12">
+                    <div style="color: #9abf69;">Password should be alphanumeric with 6 to 12 characters.</div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-xs-12">
+               <div class="col-xs-6">
+                  <!-- <a ng-disabled="regiForm.$invalid" type="submit" class="center btn btn-info btn-lg">
+                    <span class="glyphicon glyphicon-ok"></span> Submit
+                  </a> -->
+                  <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" ng-disabled="regiForm.$invalid">&nbsp;Submit</button>
+               </div>
+               <div class="col-xs-6">
+
+                  <a ng-click="cancel()" class="center btn btn-info btn-lg">
+                    <span class="glyphicon glyphicon-remove"></span> Cancel
+                  </a>
+               </div>
+            </div>
+      </fieldset>
+   </form>
+   </div>
+ </div>
+</div>

@@ -1,0 +1,21 @@
+{
+  "name": "ZeusApp",
+  "description": "assignment by zelearning",
+  "authors": [
+    "sachin patil"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^1.0.5",
+    "angular-route": "^1.6.5",
+    "angularjs-datepicker": "^2.1.23"
+  }
+}

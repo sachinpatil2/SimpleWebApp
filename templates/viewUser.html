@@ -1,0 +1,49 @@
+
+<div class="row" style="margin:5% 0 5% 0;">
+   <div class="col-xs-12">
+      User Detail Information
+   </div>
+</div>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Description</td>
+        <td>value</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>First Name</td>
+        <td>{{viewData.firstName}}</td>
+      </tr>
+
+      <tr>
+        <td>Last Name</td>
+        <td>{{viewData.lastName}}</td>
+      </tr>
+      <tr>
+        <td>Email Id</td>
+        <td>{{viewData.email}}</td>
+      </tr>
+      <tr>
+        <td>Date Of Birth</td>
+        <td>{{viewData.dob}}</td>
+      </tr>
+      <tr>
+        <td>City</td>
+        <td>{{viewData.city}}</td>
+      </tr>
+      <tr>
+        <td>User Type</td>
+        <td>{{viewData.userType}}</td>
+      </tr>
+      <tr>
+        <td>User Status</td>
+        <td>{{viewData.userStatus}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <a ui-sref="home" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-arrow-left"></span> Back
+  </a>

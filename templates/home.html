@@ -1,0 +1,62 @@
+<a ui-sref="addNewUser" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-plus"></span> Add New User
+</a>
+<input class="searchtext" type='text' ng-model='searchText' placeholder="Search a user like : sachin " />
+<table class="table">
+  <thead class="thead-inverse head">
+    <tr>
+      <th>#</th>
+      <th>Full Name</th>
+      <th>Email Id</th>
+      <th>City</th>
+      <th>DOB</th>
+      <th>User Type</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="element in data | filter:searchText">
+      <td scope="row">{{$index+1}}</td>
+      <td>{{element.firstName+" "+element.lastName}}</td>
+      <td>{{element.email}}</td>
+      <td>{{element.city}}</td>
+      <td>{{element.dob}}</td>
+      <td>{{element.userType}}</td>
+      <td>
+        <a ng-click="viewUser(element._id)" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-user"></span> View
+        </a>
+
+        <a ng-click="editUser(element._id)" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-pencil"></span> Edit
+        </a>
+
+      <a  class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="setDeleteUserId(element._id)">
+          <span class="glyphicon glyphicon-trash"></span> Delete
+        </a>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <p>Are you sure want to delete?.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" ng-click="deleteUser(element._id)" data-dismiss="modal"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+          <button type="button" class="btn btn-info btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
