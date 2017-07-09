@@ -1,4 +1,4 @@
-# SimpleWebApp
+# SimpleWebApp using MEAN stack
 
 Here are the simple steps to run this application.
 
